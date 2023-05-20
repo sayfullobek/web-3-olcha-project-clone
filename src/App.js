@@ -1,14 +1,16 @@
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import SignUp from "./Olcha/SignUp";
+import {BrowserRouter, Routes} from "react-router-dom";
+import {NavBar} from "./nav/navBar";
+import Footer from "./nav/Footer";
 
 function App() {
-  return (
-      <BrowserRouter>
-          <Routes>
-              <Route path={"/reg"} element={<SignUp/>}/>
-          </Routes>
-      </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <NavBar/>
+            <Footer/>
+            <Routes>
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;
