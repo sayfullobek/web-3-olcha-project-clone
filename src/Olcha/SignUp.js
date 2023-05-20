@@ -3,6 +3,7 @@ import {useState} from  'react'
 import {Table, Button} from "reactstrap";
 import "./signUp.css"
 import {toast} from "react-toastify";
+import {Link} from "react-router-dom";
 export const SignUp = () => {
         const [modal, setModal] = useState(false);
 
@@ -31,7 +32,9 @@ export const SignUp = () => {
         localStorage.setItem("phoneNumber", phoneNumber)
         toast.success("Qo'shildi")
         window.location.reload()
-
+        window.onbeforeunload = function() {
+            localStorage.clear();
+        }
 
     }
        return(
@@ -50,19 +53,19 @@ export const SignUp = () => {
                                Kabinet
                            </button>
                            <ul className="dropdown-menu" style={{padding:"10px", width:"270px"}}>
-                               <li><a className="dropdown-item" href="#"><i className="bi bi-person fs-4"></i><i style={{marginLeft:"10px"}}>Shaxsiy kabinet</i></a></li>
-                               <li><a className="dropdown-item" href="#"><i className="bi bi-bag-check fs-4"></i><i style={{marginLeft:"10px"}}>Mening buyurtmalarim</i></a></li>
-                               <li><a className="dropdown-item" href="#"><i className="bi bi-bell fs-4"></i><i style={{marginLeft:"10px"}}>Bildirishnomalar</i></a></li>
-                               <li><a className="dropdown-item" href="#"><i className="bi bi-box-arrow-right fs-4"></i><i style={{marginLeft:"10px"}}>Chiqish</i></a></li>
+                               <li><Link to={"#"} className="dropdown-item"><i className="bi bi-person fs-4" style={{margin:"0px 8px 0px 0px"}}></i>Shaxsiy kabinet</Link></li>
+                               <li><Link to={"/to'lov"} className="dropdown-item"><i className="bi bi-bag-check fs-4"style={{margin:"0px 8px 0px 0px"}}></i>Mening buyurtmalarim</Link></li>
+                               <li><Link to={"#"} className="dropdown-item"><i className="bi bi-bell fs-4" style={{margin:"0px 8px 0px 0px"}}></i>Bildirishnomalar</Link></li>
+                               <li><Link to={"#"} className="dropdown-item"><i className="bi bi-box-arrow-right fs-4" style={{margin:"0px 8px 0px 0px"}}></i>Chiqish</Link></li>
                            </ul>
                        </div>
                    </>
                )
                }
 
-               <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style={{marginTop:"130px"}}>
+               <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style={{marginTop:"130px"}}>
                    <div className="modal-dialog">
-                       <div  className="modal-content">
+                       <div  className="modal-content" style={{padding:"10px"}}>
                            <div style={{height:"400px"}} className="modal-body">
                                <h2 className="d-flex align-items-center justify-content-center">Profilga kiring yoki <br/> profil yarating</h2>
                                <form>
@@ -83,7 +86,7 @@ export const SignUp = () => {
                                        </div>
                                    </div>
                                    </div>
-                                   <Button style={{marginTop:"50px",height:"50px", width:"390px",marginLeft:"45px"}} className="btn btn-danger" onClick={()=>addPhone()} type={"button"}>Tasdiqlash</Button>
+                                   <Button style={{marginTop:"50px",height:"50px", width:"390px",marginLeft:"35px"}} className="btn btn-danger" onClick={()=>addPhone()} type={"button"}>Tasdiqlash</Button>
                                </form>
                            </div>
                        </div>
